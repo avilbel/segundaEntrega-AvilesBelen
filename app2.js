@@ -1,15 +1,157 @@
-alert('.....Charlies Shopping List.....');
+const productos = [
 
-do {
-    opcion = parseInt(prompt('Welcome to Cahrlies Shopping List!!! \n What items would you like to add?'));
-    const listProducts = product.map((product, index) => `${index}: ${product.name} price: ${product.price}`)
-    while (option <= 0 || option > 4) {
-        option = parseInt(prompt(`Insert Valid Option pls!!! \n ${PRODUCT01.product} : ${PRODUCT01.price}\n ${PRODUCT02.product} : ${PRODUCT02.price}\n ${PRODUCT03.product} : ${PRODUCT03.price}\n ${PRODUCT04.product} : ${PRODUCT04.price}\n `));
+    { nombre: "oreos", precio: 52 },
+
+    { nombre: "pepitos", precio: 67 },
+
+    { nombre: "macucas", precio: 43 },
+
+    { nombre: "pepas", precio: 35 },
+
+]
+
+
+
+
+let carrito = []
+
+
+
+
+let seleccion = prompt("Desea comprar galletitas? si o no");
+
+
+
+
+while (seleccion != "si" && seleccion != "no"); {
+
+    alert("por favor ingrese si o no");
+
+    seleccion = prompt("Desea comprar galletitas? si o no");
+
+}
+
+
+
+
+if (seleccion == "si") {
+
+    alert("A continuacion nuestra lista de galletitas");
+
+    let todosLosProductos = productos.map((productos) => productos.nombre + " " + productos.precio + "$")
+
+    alert(todosLosProductos.join(" - "))
+
+} else if (seleccion == "no") {
+
+    alert("Gracias por venir, la proxima compre galletitas")
+
+}
+
+
+
+
+while (seleccion != "no") {
+
+    let producto = prompt("Agrega algunas galletitas a tu carrito");
+
+    let precio = 0;
+
+
+
+
+    if (producto === "oreos" || producto === "pepitos" || producto === "macucas" || producto === "pepas") {
+
+        switch (producto) {
+
+            case "oreos":
+
+                precio = 52;
+
+                break;
+
+
+
+
+            case "pepitos":
+
+                precio = 67;
+
+                break;
+
+
+
+
+            case "macucas":
+
+                precio = 43;
+
+                break;
+
+
+
+
+            case "pepas":
+
+                precio = 35;
+
+                break;
+
+
+
+
+            default:
+
+                break;
+
+        }
+
+
+
+
+        let unidades = parseInt(prompt("cuantas unidades quiere llevar?"))
+
+
+
+
+        carrito.push({ producto, unidades, precio })
+
+    } else {
+
+        alert("Galletita no disponible")
+
     }
 
-    quantity = parseInt(prompt('Add how much tou want:'));
-    total = sum(total, PRODUCT01.quantity);
+
+
+
+    seleccion = prompt("Desea seguir comprando?")
+
+
+
+
+    while (seleccion === "no") {
+
+        alert("Gracias por la compra")
+
+        carrito.forEach((carritoFinal) => {
+
+            alert(`producto: ${carritoFinal.producto}, unidades: ${carritoFinal.unidades}, total a pagar por producto ${carritoFinal.unidades * carritoFinal.precio} `)
+
+        })
+
+        break;
+
+    }
+
 
 
 
 }
+
+
+
+
+const total = carrito.reduce((acc, el) => acc + el.precio * el.unidades, 0)
+
+alert(`el total a pagar por su compra es: ${total}`)
